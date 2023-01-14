@@ -16,6 +16,8 @@ function showTime() {
 
     let timeData = new Date(Date()).toLocaleString(undefined, { timeZone: 'Asia/Kolkata' })
 
+    console.log(timeData);
+
     let checkHavePmAm = /[A-z]/.test(timeData)
 
     let session, date, time, hr, min, sec, dd, mm, yyyy
@@ -29,7 +31,6 @@ function showTime() {
     } else {
 
         [date, time] = timeData.split(',').join('').split(' ');
-        console.log(time);
 
         [hr, min, sec] = time.split(':');
         [dd, mm, yyyy] = date.split('/');
