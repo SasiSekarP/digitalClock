@@ -12,12 +12,15 @@ let yyyyEl = document.getElementById('yyyy');
 
 // derived data
 
+let dummyDate;
 
 // function area
 
 function showTime() {
 
     let timeData = new Date(Date()).toLocaleString(undefined, { timeZone: 'Asia/Kolkata' })
+
+    dummyDate = timeData;
 
     let session, date,time
 
@@ -83,3 +86,4 @@ function showTime() {
 // run area
 
 showTime();
+console.log(dummyDate);
