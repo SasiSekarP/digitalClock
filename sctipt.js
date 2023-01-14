@@ -27,7 +27,10 @@ function showTime() {
         [dd, mm, yyyy] = date.split('/');
 
     } else {
-        [date, time] = timeData.split(',').join('').split(' ')
+
+        [date, time] = timeData.split(',').join('').split(' ');
+        console.log(time);
+
         [hr, min, sec] = time.split(':');
         [dd, mm, yyyy] = date.split('/');
 
