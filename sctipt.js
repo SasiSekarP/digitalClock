@@ -16,8 +16,6 @@ function showTime() {
 
     let timeData = new Date(Date()).toLocaleString(undefined, { timeZone: 'Asia/Kolkata' })
 
-    console.log(timeData);
-
     let checkHavePmAm = /[A-z]/.test(timeData)
 
     let session, date, time, hr, min, sec, dd, mm, yyyy
