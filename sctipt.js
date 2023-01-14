@@ -10,24 +10,39 @@ let ddEl = document.getElementById('dd');
 let mmEl = document.getElementById('mm');
 let yyyyEl = document.getElementById('yyyy');
 
-// derived data
-
-let dummyDate;
-
 // function area
 
 function showTime() {
 
     let timeData = new Date(Date()).toLocaleString(undefined, { timeZone: 'Asia/Kolkata' })
 
-    dummyDate = timeData;
+    let checkHavePmAm = /[A-z]/.test(timeData)
 
-    let session, date,time
+    let session, date, time, hr, min, sec, dd, mm, yyyy
+    
+    if (checkHavePmAm) {
+        [date, time, session] = timeData.split(',').join('').split(' ');
 
-    [date, time, session] = timeData.split(',').join('').split(' ')
+        [hr, min, sec] = time.split(':');
+        [dd, mm, yyyy] = date.split('/');
 
-    let [hr, min, sec] = time.split(':');
-    let [dd, mm, yyyy] = date.split('/');
+    } else {
+        [date, time] = timeData.split(',').join('').split(' ')
+        [hr, min, sec] = time.split(':');
+        [dd, mm, yyyy] = date.split('/');
+
+        if (hr < 12) {
+            session = 'am';
+        } else {
+            session = 'pm';
+        }
+
+        if (hr > 12) {
+            hr = hr - 12;
+        }
+    }
+
+    
 
     switch (Number(mm)) {
         case 1:
@@ -86,4 +101,3 @@ function showTime() {
 // run area
 
 showTime();
-console.log(dummyDate);
